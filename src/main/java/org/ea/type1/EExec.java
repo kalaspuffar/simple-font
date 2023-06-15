@@ -15,6 +15,14 @@ public class EExec {
         definitions.put("MinFeature", "{16 16}");
         definitions.put("password", "5839");
         definitions.put("UniqueID", Integer.valueOf(uniqueId));
+        charStrings.add(new CharString(CharString.NOT_DEFINED, -1));
+    }
+
+    public void setBlueValues(int capHeight, int xHeight) {
+        String blueValues = "[-15 0 ";
+        blueValues += capHeight + " " + (capHeight + 10) + " ";
+        blueValues += xHeight + " " + (xHeight + 10) + "]";
+        definitions.put("BlueValues", blueValues);
     }
 
     public void addCharString(CharString cs) {
@@ -26,7 +34,7 @@ public class EExec {
         return charStrings;
     }
 
-    public String getResult() throws Exception {
+    public String getResult(boolean binary) throws Exception {
         String encoded = "";
         encoded += "dup /Private ";
         encoded += definitions.size() + 1;
@@ -59,6 +67,6 @@ public class EExec {
 
         HexEnc hexEnc = new HexEnc(false, true);
         hexEnc.setData(encoded);
-        return hexEnc.getResult(false);
+        return hexEnc.getResult(binary);
     }
 }

@@ -26,7 +26,7 @@ public class TestLibrary {
 
         File f = new File("../../fontwork/daniel.pfa");
         BufferedWriter bw = new BufferedWriter(new FileWriter(f));
-        bw.write(ff.getResult());
+        bw.write(ff.getResult(false));
         bw.flush();
         bw.close();
     }
